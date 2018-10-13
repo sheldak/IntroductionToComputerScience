@@ -200,10 +200,8 @@ void zad2_5(int n){
         }
         //4 ostatnie cyfry wyniku wydaja sie wystarczajace zeby uzyskac poprawny wynik
         result%=10000;
-        if(i>n-11){
-            cout << result%10 << endl;
-        }
     }
+    cout << result%10;
 }
 
 int main() {
