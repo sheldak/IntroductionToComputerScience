@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 void zad2_9(int n){
     vector<int> v = {1, 1};
     int a = 1;
@@ -32,9 +27,4 @@ void zad2_9(int n){
             sum = 2;
         }
     }
-}
-
-int main() {
-    zad2_9();
-    return 0;
 }
