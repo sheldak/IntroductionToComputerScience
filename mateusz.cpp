@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <sys/time.h>
+
+using namespace std;
+
 void zad2_7(int n){
     int i = n/2;
     int k = n/2;
@@ -14,3 +20,9 @@ void zad2_7(int n){
         }
     }
 }
+
+int main(){
+    zad2_7(2);
+    return 0;
+}
+

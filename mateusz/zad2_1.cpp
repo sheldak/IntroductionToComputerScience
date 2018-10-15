@@ -2,7 +2,7 @@ void zad2_1(int n){
     int a = 1;
     int b = 1;
     vector<int> v = {a, b};
-    while(a<n/2){
+    while(a<n){
         a=a+b;
         b=a-b;
         v.push_back(a);
