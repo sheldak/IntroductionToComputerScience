@@ -10,6 +10,7 @@ void zad3_6(){
         }
         // we check each array element until we find index where i-1 is bigger and i is smaller than n
         for (int i = 9; i >= 0; --i) {
+            if(n<numbers(9)) continue;
             // by using hard comparison we avoid inserting duplicates into the array
             if (n>numbers[i] && (i-1<0 || n<numbers[i-1])){
                 // we move all elements smaller than n back
