@@ -1,12 +1,10 @@
 void zad3_5(int n){
     int mianownik = 1;
     int licznik = 2;
-    int i = 3;
-    while (mianownik<1000){
-        int silnia = 1;
-        for (int j = 2; j <= i; ++j) {
-            silnia*=j;
-        }
+    int i = 2;
+    int silnia = 1;
+    while (mianownik<20000000){
+        silnia*=i;
         licznik = licznik*(silnia/mianownik)+1;
         mianownik=silnia;
         i++;
