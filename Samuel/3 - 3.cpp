@@ -13,7 +13,7 @@ void c3_3(){
 
     for(int i=2; i<=s; i++){
         if(tab[i]){
-            int point = 2*i;
+            int point = i*i;
             while(point < N){
                 tab[point] = false;
                 point += i;
