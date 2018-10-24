@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-main()
-{
+void c2_6c(){
+
     int n;
     cin>>n;
     int n_copy = n, n_length = 0;
@@ -16,7 +16,7 @@ main()
         for(int i = n_length - 1; i>=0; i--){
             if((binary_seq >> i)% 2 == 1){
                 subnumber *= 10;
-                subnumber += (n/pow(10,i))%10;
+                subnumber += ((int)(n/pow(10,i)))%10;
             }
         }
 
@@ -25,3 +25,4 @@ main()
         }
     }
 }
+
