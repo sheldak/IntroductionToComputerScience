@@ -1,4 +1,4 @@
-void zad3_4(int n){
+void zad3_4 (int n){
     int silnia[1000];
     silnia[0]=1;
     for (int i = 2; i <= n; ++i) {
