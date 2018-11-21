@@ -11,23 +11,17 @@ int waga(int i){
     }
     return res;
 }
+bool sumy( int sum1, int sum2, int sum3, int t[N], int ind=0){
+    if(sum1>0 && sum1==sum2 && sum2==sum3) return true;
+    if(ind==N) return false;
+    return(sumy(sum1+t[ind], sum2, sum3, t, ind+1)||
+           sumy(sum1, sum2+t[ind], sum3, t, ind+1)||
+           sumy(sum1, sum2, sum3+t[ind], t, ind+1));
+}
 bool podzial(int t[N]){
     int w[N];
     for(int i=0;i<N;i++) {w[i]=waga(t[i]); /*cout<<w[i];*/}
-    int sum1=0;
-    for(int i=0;i<N-2;i++){
-        sum1+=w[i];
-        int sum2=0;
-        for(int j=i+1;j<N-1;j++){
-            sum2+=w[j];
-            int sum3=0;
-            for(int k=j+1;k<N;k++){
-                sum3+=w[k];
-                if(sum3==sum2 && sum3==sum1) return true;
-            }
-        }
-    }
-    return false;
+    return sumy(0,0,0,t);
 }
 main(){
     int t[]={30,10,8,9,18};
