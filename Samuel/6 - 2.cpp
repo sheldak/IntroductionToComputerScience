@@ -1,28 +1,25 @@
 #include <iostream>
 using namespace std;
 
-void more_sums(int *t, int N, int m, int curr, int sum, bool *is){
+bool more_sums(int *t, int N, int m, int curr, int sum){
 
     if(sum == m)
-        *is = true;
+        return true;
 
     for(int i = curr; i<N; i++){
-            more_sums(t, N, m, i+1, sum + t[i], is);
-            more_sums(t, N, m, i+1, sum - t[i], is);
+        if(more_sums(t, N, m, i+1, sum + t[i]) || more_sums(t, N, m, i+1, sum - t[i]))
+            return true;
     }
+    return false;
 }
 
 void c6_2(int N){
-    int t[N] = {2, 5};
+    int t[N] = {2, 5, 10};
 
-    bool is = false;
-    bool *iss = &is;
     int m;
     cin>>m;
 
-    more_sums(t, N, m, 0, 0, iss);
-
-    if(is)
+    if(more_sums(t, N, m, 0, 0))
         cout<<"TAK";
     else
         cout<<"NIE";
