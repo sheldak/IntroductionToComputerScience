@@ -1,42 +1,32 @@
 #include <iostream>
 using namespace std;
 
-void more_sums(int *t, bool *curr_w, int N, int m, int curr, int sum, bool *is){
+bool write_sums(int *t, int N, int m, int curr, int sum){
 
-    if(sum == m) {
-        if(!*is) {
-            for (int i = 0; i < N; i++) {
-                if (curr_w[i])
-                    cout << t[i] << " ";
-            }
+    if(sum == m)
+       return true;
+
+    for(int i = curr; i>=0; i--){
+
+        if(write_sums(t, N, m, i-1, sum + t[i])){
+            cout<<t[i]<<" ";
+            return true;
         }
-
-        *is = true;
+        if(write_sums(t, N, m, i-1, sum - t[i])) {
+            cout << t[i] << " ";
+            return true;
+        }
     }
-
-    for(int i = curr; i<N; i++){
-        curr_w[i] = true;
-        more_sums(t, curr_w, N, m, i+1, sum + t[i], is);
-        more_sums(t, curr_w, N, m, i+1, sum - t[i], is);
-        curr_w[i] = false;
-    }
+    return false;
 }
 
 void c6_3(int N){
-    int t[N] = {2, 5, 10, 25};
-    bool curr_w[N];
+    int t[N] = {2, 5, 10, 25, 100};
 
-    for(int i=0; i<N; i++)
-        curr_w[i] = false;
-
-    bool is = false;
-    bool *iss = &is;
     int m;
     cin>>m;
 
-    more_sums(t, curr_w, N, m, 0, 0, iss);
-
-    if(is)
+    if(write_sums(t, N, m, N-1, 0))
         cout<<"TAK";
     else
         cout<<"NIE";
