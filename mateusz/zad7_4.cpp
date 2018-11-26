@@ -10,18 +10,18 @@ int move(int t[N][N], bool used[N][N], int x, int y, int sum, int minimum){
     used[x][y]= true;
     minimum=min(minimum, move(t, used, x+1, y, sum+t[x+1][y], minimum));
     if(x-1>=0){
-        minimum=min(minimum, move(t, used, x-1, y, sum+t[x-1][y], minimum));
+    //    minimum=min(minimum, move(t, used, x-1, y, sum+t[x-1][y], minimum));
         if(y-1>=0){
-            minimum=min(minimum, move(t, used, x-1, y-1, sum+t[x-1][y-1], minimum));
+    //        minimum=min(minimum, move(t, used, x-1, y-1, sum+t[x-1][y-1], minimum));
         }if(y+1<N){
-            minimum=min(minimum, move(t, used, x-1, y+1, sum+t[x-1][y+1], minimum));
+    //        minimum=min(minimum, move(t, used, x-1, y+1, sum+t[x-1][y+1], minimum));
         }
     }if(y-1>=0){
         minimum=min(minimum, move(t, used, x+1, y-1, sum+t[x+1][y-1], minimum));
-        minimum=min(minimum, move(t, used, x, y-1, sum+t[x][y-1], minimum));
+    //    minimum=min(minimum, move(t, used, x, y-1, sum+t[x][y-1], minimum));
     }if(y+1<N){
         minimum=min(minimum, move(t, used, x+1, y+1, sum+t[x+1][y+1], minimum));
-        minimum=min(minimum, move(t, used, x, y+1, sum+t[x][y+1], minimum));
+    //    minimum=min(minimum, move(t, used, x, y+1, sum+t[x][y+1], minimum));
     }
     used[x][y]= false;
     return minimum;
