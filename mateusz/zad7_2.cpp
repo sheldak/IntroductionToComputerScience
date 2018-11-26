@@ -15,7 +15,7 @@ bool is_prime(int &t, int length){
 }
 
 bool zad7_2(int t[N], int start){
-    if(start==N){
+    if(start==N+1){
         return true;
     }
     for (int i = start; i < N; ++i) {
