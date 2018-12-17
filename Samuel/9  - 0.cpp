@@ -1,10 +1,13 @@
+#include <iostream>
+using namespace std;
+
 struct node{
     int val;
     node *next;
 };
 
 
-void add_start(node *head, int el){
+void add_start(node *&head, int el){
     node *p;
     p = new node;
     p->next = head;
@@ -16,7 +19,7 @@ void add_start(node *head, int el){
 void add_end(node*& head, int el){
 
     node *p;
-    node *current = start;
+    node *current = head;
     p = new node;
     p->next = NULL;
     p->val = el;
@@ -32,7 +35,7 @@ void add_end(node*& head, int el){
 }
 
 
-void erase_start(*&head){
+void erase_start(node *&head){
 
     if(head != NULL){
         node *t = head;
@@ -42,25 +45,20 @@ void erase_start(*&head){
 }
 
 
-void erase_end(*&head){
+void erase_end(node *head){
 
-    if(head != NULL){
-        node *current = head;
+    if(head != NULL && head->next != NULL){
 
-        if(current->next == NULL){
-            delete current;
-            head = NULL;
-        }
-        while (current->next != NULL)
-            curernt = head->next;
+        while(head->next->next != NULL)
+            head = head->next;
 
-        delete curernt->next;
-        current  = NULL;
+        delete head->next;
+        head->next = NULL;
     }
 }
 
 
-void erase_every_other(*head){
+void erase_every_other(node *head){
 
     int i=1;
 
@@ -72,13 +70,32 @@ void erase_every_other(*head){
                 node *p = head->next;
                 head->next = head->next->next;
                 delete p;
+                i++;
             }
             else{
-                delete head->next->next;
+                delete head->next;
                 head->next = NULL;
             }
 
         }
         head = head->next;
+    }
+}
+
+void c9_0(){
+    node *first;
+    first = new node;
+    first = NULL;
+    add_end(first,2);
+    add_start(first,1);
+    add_end(first,3);
+    add_end(first,4);
+    add_end(first,5);
+    add_end(first,6);
+    add_end(first,7);
+    erase_every_other(first);
+    while(first != NULL) {
+        cout << first->val << endl;
+        first = first->next;
     }
 }
