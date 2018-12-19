@@ -64,20 +64,25 @@ void c9_2() {
     // ----- WYPISYWANIE -----
     node *current = tab;
     if(current != NULL) {
-        cout << "[" << current->val << ", ";
+        cout << "[" << current->val;
         current = current->next;
-
+        if(current == NULL)
+            cout<<"]"<<endl;
+        else
+            cout<<", ";
 
         while (current != NULL && current->next != NULL) {
             cout << current->val << ", ";
             current = current->next;
         }
-        cout << current->val << "]"<<endl;
+
+        if(current != NULL)
+            cout << current->val << "]"<<endl;
     }
     else
         cout<<"[]"<<endl;
 
-// ------------------------
+    // ------------------------
 
     cout<<"1: "<<value(tab, 1)<<endl;
     cout<<"3: "<<value(tab, 3)<<endl;
