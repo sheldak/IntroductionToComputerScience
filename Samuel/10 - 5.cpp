@@ -55,23 +55,16 @@ node *sortt(node *a){   // sortowanie jak w tresci zadania
     for(int i=0; i<10; i++){    // sortowanie list niemalejaco
         if(n[i] != nullptr){
             if(res == nullptr){
-                node *p = new node;
-                p->val = n[i]->val;
-                n[i] = n[i]->next;
+                node *p = n[i];
 
                 res = p;
-                current = res;
+                current = curr[i];
             }
 
-            while(n[i] != nullptr){
-                node *r = new node;
-                r->val = n[i]->val;
-
-                current->next = r;
-                current = current->next;
-                n[i] = n[i]->next;
+            else{
+                current->next = n[i];
+                current = curr[i];
             }
-
         }
     }
     return res;
@@ -93,6 +86,7 @@ void c10_5(){
     add_end(first, 18);
     add_end(first, 28);
     add_end(first, 17);
+    add_end(first, 20);
 
     node *result = sortt(first);
 
