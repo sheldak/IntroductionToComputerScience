@@ -26,7 +26,7 @@ void add_end(node*& head, int el){  // dodawanie na koniec
 int erase(node *&a, node *&b){
     int res = 0;
 
-    if(a != nullptr && b != nullptr){
+    if(a != nullptr && b != nullptr){       // pierwsze takie same
         node *curr_a = a;
         node *curr_b = b;
         while(a != nullptr && b != nullptr && a->w == b->w){
@@ -41,7 +41,7 @@ int erase(node *&a, node *&b){
             res++;
         }
         curr_b = b;
-        while(a != nullptr && curr_b != nullptr && curr_b->next != nullptr){
+        while(a != nullptr && curr_b != nullptr && curr_b->next != nullptr){      // usuwanie pierwszego z a i innego niz pierwszy z b
             if(a->w == curr_b->next->w){
                 node *r = a;
                 a = a->next;
@@ -59,7 +59,7 @@ int erase(node *&a, node *&b){
         }
 
         while(curr_a != nullptr && curr_a->next != nullptr){
-            while(b != nullptr && curr_a->next != nullptr && b->w == curr_a->next->w){
+            while(b != nullptr && curr_a->next != nullptr && b->w == curr_a->next->w){      // usuwanie pierwszego z b i innego niz 1 z a
                 node *r = curr_a->next;
                 curr_a->next = curr_a->next->next;
                 delete r;
@@ -72,7 +72,7 @@ int erase(node *&a, node *&b){
             }
 
             curr_b = b;
-            while(curr_a != nullptr && curr_a->next != nullptr && curr_b != nullptr && curr_b->next != nullptr){
+            while(curr_a != nullptr && curr_a->next != nullptr && curr_b != nullptr && curr_b->next != nullptr){    // usuwanie dwoch nie pierwszych
                 if(curr_b->next->w == curr_a->next->w){
                     node *r = curr_a->next;
                     curr_a->next = curr_a->next->next;
